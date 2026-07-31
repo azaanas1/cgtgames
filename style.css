@@ -1,0 +1,226 @@
+/* style.css — PRODUCTION READY COMPONENT SYSTEM */
+:root {
+    --bg-primary: #f1f5f9;
+    --card-bg: #ffffff;
+    --sidebar-bg: #1e293b;
+    --text-title: #0f172a;
+    --text-body: #64748b;
+    --text-muted: #94a3b8;
+    --button-accent: deepskyblue;
+    --button-accent-hover: #00b0f0;
+    --border-color: #e2e8f0;
+    --badge-bg: #f1f5f9;
+    --badge-text: #475569;
+}
+
+/* Global Dark Theme HTML Data Attribute Mappings */
+[data-theme="dark"] {
+    --bg-primary: #0f172a;
+    --card-bg: #1e293b;
+    --sidebar-bg: #0b0f19;
+    --text-title: #f8fafc;
+    --text-body: #94a3b8;
+    --text-muted: #64748b;
+    --button-accent: #38bdf8;
+    --button-accent-hover: #0ea5e9;
+    --border-color: #334155;
+    --badge-bg: #334155;
+    --badge-text: #cbd5e1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+/* App Core Layout Structure */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Menu Panel */
+.sidebar-menu {
+    width: 260px;
+    background-color: var(--sidebar-bg);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-logo {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    letter-spacing: 0.5px;
+}
+
+.menu-links {
+    list-style: none;
+}
+
+.menu-links li {
+    margin-bottom: 12px;
+}
+
+.menu-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 16px;
+    display: block;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.menu-links li.active-link a, .menu-links a:hover {
+    color: #ffffff;
+    background-color: #334155;
+}
+
+/* Main Dashboard Panel */
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+/* Centralized Interactive Card */
+.dashboard-card {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    width: 100%;
+    border: 1px solid var(--border-color);
+}
+
+#counter-display {
+    color: var(--text-title);
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.card-subtitle {
+    color: var(--text-body);
+    font-size: 0.95rem;
+    margin-bottom: 32px;
+}
+
+/* Action Group */
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+/* Buttons Upgrade */
+button {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-block;
+    flex-shrink: 0; /* FIX: Prevents flex boxes from shrinking buttons to 0px wide */
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#my-btn {
+    background-color: var(--button-accent);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 191, 255, 0.25);
+}
+
+#my-btn:hover {
+    background-color: var(--button-accent-hover);
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    background-color: var(--badge-bg);
+    color: var(--badge-text);
+}
+
+.secondary-btn:hover {
+    background-color: var(--border-color);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Upgrade Card Button Modifications Override */
+.dashboard-card button {
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    width: auto;         /* FIX: Forces natural width calculation overrides */
+    min-width: 80px;     /* FIX: Guarantees button footprint shape safety bounds */
+}
+
+button:disabled {
+    background-color: #cbd5e1 !important;
+    color: #64748b !important;
+    box-shadow: none !important;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+[data-theme="dark"] button:disabled {
+    background-color: #334155 !important;
+    color: #475569 !important;
+}
+
+/* Floating Click Particle System Styling */
+.click-particle {
+    position: absolute;
+    pointer-events: none;
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--button-accent);
+    animation: floatUpAndFade 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    z-index: 9999;
+}
+
+/* Micro-Interaction Animation Feedback Juice Hooks */
+.pop-active {
+    animation: clickPop 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.crit-active {
+    animation: flashCrit 0.18s ease-in-out forwards;
+}
+
+@keyframes clickPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.96); }
+    100% { transform: scale(1); }
+}
+
+@keyframes flashCrit {
+    0% { color: #ef4444; transform: scale(1.08) rotate(-1deg); }
+    50% { color: #f97316; transform: scale(1.08) rotate(1deg); }
+    100% { color: var(--text-title); transform: scale(1) rotate(0deg); }
+}
+
+@keyframes floatUpAndFade {
+    0% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-60px) scale(0.8); }
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - ClickerGameTS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://w3.org viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- Navigation Menu -->
+        <nav class="sidebar-menu">
+            <div class="menu-logo" style="font-size: 0.95rem; font-family: monospace; color: deepskyblue; letter-spacing: -0.5px;">
+                🖱️ clickergamets.pages.dev
+            </div>
+            <ul class="menu-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="analytics.html">Analytics</a></li>
+                <li class="active-link"><a href="settings.html">Settings</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Settings View -->
+        <main class="main-content">
+            <div class="dashboard-card" style="width: 100%; max-width: 500px; text-align: left; padding: 32px;">
+                <h1 style="font-size: 1.8rem; color: #0f172a; margin-bottom: 4px;">⚙️ System Settings</h1>
+                <p class="card-subtitle" style="margin-bottom: 24px;">Configure your gaming profile & preferences</p>
+                
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    
+                    <!-- Setting 1: Player Profile Profile Name -->
+                    <div>
+                        <label style="display: block; font-weight: 600; color: #334155; margin-bottom: 8px; font-size: 0.9rem;">Player Username</label>
+                        <input type="text" id="username-input" placeholder="Enter guest name..." style="width: 100%; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem;">
+                    </div>
+
+                    <!-- Setting 2: Graphic Theme Switcher -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+                        <div>
+                            <span style="display: block; font-weight: 600; color: #334155; font-size: 0.9rem;">High Contrast Theme</span>
+                            <span style="color: #64748b; font-size: 0.8rem;">Switch interface color mode</span>
+                        </div>
+                        <button id="theme-toggle-btn" style="background-color: #6366f1; color: white; padding: 8px 16px; font-size: 0.85rem; width: auto;">Toggle Theme 🌙</button>
+                    </div>
+
+                    <!-- Setting 3: Secret Developer Console (Cheat Code Entry) -->
+                    <div style="padding-top: 10px; border-top: 1px solid #f1f5f9;">
+                        <label style="display: block; font-weight: 600; color: #334155; margin-bottom: 8px; font-size: 0.9rem;">Developer Cheat Code</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" id="cheat-input" placeholder="Type secret code..." style="flex: 1; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem; font-family: monospace;">
+                            <button id="apply-cheat-btn" style="background-color: #0f172a; color: white; width: auto; padding: 10px 16px; font-size: 0.85rem;">Apply</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
