@@ -1,10 +1,14 @@
-# Folders
+# Folders inside your project to block
 node_modules/
 dist/
 Output/
 New Folder/
+novnc/
 
-# File Extensions
+# File Extensions to block
 *.php
 *.iss
-*.yml
+package-lock.json
+
+# Local Backup Files to block
+backup.*
