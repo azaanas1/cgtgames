@@ -4,6 +4,5 @@ stages:
 test_job:
   stage: test
   script:
-    - echo "Hello from your local Windows runner!"
+    - Write-Output "Hello from your local Windows runner!"
     - Get-Date
-    - Write-Output "Pipeline ran successfully without any account blocks!"
