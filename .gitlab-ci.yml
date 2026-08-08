@@ -1,8 +1,15 @@
 stages:
-  - test
+  - deploy
 
-test_job:
-  stage: test
+pages:
+  stage: deploy
   script:
-    - Write-Output "Hello from your local Windows runner!"
-    - Get-Date
+    # 1. Create a public folder if it doesn't exist
+    # 2. Copy the index.html file into it
+    - if (!(Test-Path public)) { New-Item -Path public -ItemType Directory }
+    - Copy-Item index.html public/index.html
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
