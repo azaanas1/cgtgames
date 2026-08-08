@@ -1,0 +1,48 @@
+# Define pipeline stages in execution order
+stages:
+  - test
+  - build
+
+# Global variables used across multiple jobs
+variables:
+  # Tag your images using the unique Commit SHA instead of "latest" for traceability
+  IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+
+# ----------------------------------------------------
+# STAGE 1: Run your application tests
+# ----------------------------------------------------
+run_unit_tests:
+  stage: test
+  image: node:20-alpine # Replace with your language runner (e.g., python:3.11, golang:1.22)
+  script:
+    - echo "Installing dependencies and running tests..."
+    # - npm ci
+    # - npm test
+
+# ----------------------------------------------------
+# STAGE 2: Build and push the Docker Image
+# ----------------------------------------------------
+build_and_push_image:
+  stage: build
+  image: docker:24.0.9 # Pin a stable Docker CLI version
+  services:
+    - docker:24.0.9-dind # Sidecar container providing the Docker daemon
+  variables:
+    # Required for secure communication with the DinD daemon
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_VERIFY: "1"
+    DOCKER_TLS_CERTDIR: "/certs"
+    DOCKER_CERT_PATH: "/certs/client"
+  before_script:
+    # Log into the built-in GitLab Container Registry natively
+    - echo "Logging into GitLab Container Registry..."
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - echo "Building image $IMAGE_TAG..."
+    # Leverages registry caching to speed up subsequent builds
+    - docker build --cache-from $CI_REGISTRY_IMAGE:latest -t $IMAGE_TAG -t $CI_REGISTRY_IMAGE:latest .
+    - echo "Pushing image to registry..."
+    - docker push $IMAGE_TAG
+    - docker push $CI_REGISTRY_IMAGE:latest
+  only:
+    - main # Only run this job when changes merge into your production/main branch
