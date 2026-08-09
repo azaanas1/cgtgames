@@ -16,6 +16,7 @@ pages:
     - Copy-Item main.js public/main.js
     - Copy-Item analytics.js public/analytics.js
     - Copy-Item analytics.html public/analytics.html
+    - Copy-Item settings.html public/settings.html
 
   artifacts:
     paths:
