@@ -1,21 +1,17 @@
 const { app, BrowserWindow } = require('electron');
-const path = require('node:path');
+const path = require('path');
 
 function createWindow() {
-  const mainWindow = new BrowserWindow({
-    width: 1024,
-    height: 768,
+  const win = new BrowserWindow({
+    width: 1000,
+    height: 800,
     webPreferences: {
-      nodeIntegration: false,
-      contextIsolation: true
+      nodeIntegration: true,
+      contextIsolation: false
     }
   });
 
-  // 🚀 THE FIX: Completely destroys the default system menu bar!
-  mainWindow.setMenu(null);
-
-  // Loads your local dashboard files straight from disk
-  mainWindow.loadFile(path.join(__dirname, 'index.html'));
+  win.loadFile('index.html');
 }
 
 app.whenReady().then(createWindow);

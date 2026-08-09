@@ -224,3 +224,181 @@ button:disabled {
     0% { opacity: 1; transform: translateY(0) scale(1); }
     100% { opacity: 0; transform: translateY(-60px) scale(0.8); }
 }
+/* =========================================================
+   v1.1 BETA — JUICE SYSTEM
+   ========================================================= */
+
+#my-btn {
+    position: relative;
+    overflow: hidden;
+    transform-origin: center;
+}
+
+#my-btn.pop-active {
+    animation: juiceClickPop 0.12s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes juiceClickPop {
+    0% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(0.92);
+    }
+
+    100% {
+        transform: scale(1.04);
+    }
+}
+
+#counter-display.juice-number {
+    animation: juiceNumberPop 0.16s ease-out;
+}
+
+@keyframes juiceNumberPop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+#combo-display.combo-hot {
+    animation: comboHot 0.22s ease-out;
+}
+
+@keyframes comboHot {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2) rotate(-2deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(0);
+    }
+}
+
+#combo-display.combo-insane {
+    animation: comboInsane 0.3s ease-out;
+}
+
+@keyframes comboInsane {
+    0% {
+        transform: scale(1);
+    }
+
+    35% {
+        transform: scale(1.3) rotate(3deg);
+    }
+
+    70% {
+        transform: scale(0.95) rotate(-2deg);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.crit-active {
+    animation: juiceCritFlash 0.25s ease-out !important;
+}
+
+@keyframes juiceCritFlash {
+    0% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.16);
+    }
+
+    60% {
+        transform: scale(0.96);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.juice-particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 99999;
+    font-weight: 900;
+    font-size: 1.1rem;
+    animation: juiceFloat 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+@keyframes juiceFloat {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(0.7);
+    }
+
+    25% {
+        opacity: 1;
+        transform: translate(-50%, -15px) scale(1.15);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -75px) scale(0.8);
+    }
+}
+
+.juice-ring {
+    position: fixed;
+    pointer-events: none;
+    z-index: 99998;
+    width: 20px;
+    height: 20px;
+    border: 3px solid var(--button-accent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: juiceRing 0.45s ease-out forwards;
+}
+
+@keyframes juiceRing {
+    from {
+        opacity: 0.8;
+        width: 20px;
+        height: 20px;
+    }
+
+    to {
+        opacity: 0;
+        width: 120px;
+        height: 120px;
+    }
+}
+
+.purchase-juice {
+    animation: purchaseJuice 0.3s ease-out;
+}
+
+@keyframes purchaseJuice {
+    0% {
+        transform: scale(1);
+    }
+
+    40% {
+        transform: scale(1.04);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

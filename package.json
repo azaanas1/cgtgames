@@ -1,34 +1,15 @@
 {
-  "name": "clicker-game-ts",
+  "name": "anotherbackup",
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder --windows"
+    "build:ts": "tsc",
+    "start": "tsc && electron .",
+    "dist": "tsc && electron-builder"
   },
   "devDependencies": {
     "electron": "^31.7.7",
-    "electron-builder": "^24.13.3"
-  },
-  "build": {
-    "appId": "com.clickergamets.app",
-    "productName": "ClickerGameTS",
-    "directories": {
-      "output": "dist"
-    },
-    "files": [
-      "index.html",
-      "analytics.html",
-      "settings.html",
-      "script.js",
-      "style.css",
-      "main.js"
-    ],
-    "win": {
-      "target": [
-        "dir"
-      ]
-    }
+    "electron-builder": "^24.13.3",
+    "typescript": "^5.0.0"
   }
 }

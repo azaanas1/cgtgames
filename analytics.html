@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analytics - ClickerGameTS</title>
+    <title>Telemetry Systems - ClickerGameTS</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://w3.org viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://w3.org viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
 </head>
 <body>
 
@@ -24,34 +24,46 @@
         </nav>
 
         <!-- Main Content View Wrapper -->
-        <main class="main-content">
-            <div class="analytics-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; width: 100%; max-width: 800px;">
+        <main class="main-content" style="align-items: flex-start; padding-top: 40px;">
+            <div class="analytics-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; width: 100%; max-width: 900px;">
                 
-                <!-- Card 1: Dynamic High Score Tracker -->
-                <div class="dashboard-card" style="max-width: 100%; text-align: left;">
+                <!-- Card 1: Session Balance -->
+                <div class="dashboard-card" style="max-width: 100%; text-align: left; padding: 24px;">
                     <h3 style="color: #64748b; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">Total Session Balance</h3>
-                    <h1 id="stats-total-clicks" style="font-size: 2.5rem; color: #0f172a; margin: 10px 0;">0</h1>
-                    <p style="color: #10b981; font-size: 0.85rem; font-weight: 600;">▲ Operational State Active</p>
+                    <h1 id="stats-total-clicks" style="font-size: 2.5rem; color: var(--text-title); margin: 10px 0;">0</h1>
+                    <p style="color: #10b981; font-size: 0.85rem; font-weight: 600;">▲ Operational Engine Online</p>
                 </div>
 
-                <!-- Card 2: Production Engine Ratios -->
-                <div class="dashboard-card" style="max-width: 100%; text-align: left;">
+                <!-- Card 2: Factory Power -->
+                <div class="dashboard-card" style="max-width: 100%; text-align: left; padding: 24px;">
                     <h3 style="color: #64748b; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">Passive Factory Power</h3>
-                    <h1 id="stats-auto-rate" style="font-size: 2.5rem; color: #0f172a; margin: 10px 0;">0/sec</h1>
-                    <div style="background: #e2e8f0; width: 100%; height: 6px; border-radius: 3px; overflow: hidden; margin-top: 15px;">
-                        <div id="stats-progress-bar" style="background: deepskyblue; width: 0%; height: 100%; transition: width 0.4s ease;"></div>
+                    <h1 id="stats-auto-rate" style="font-size: 2.5rem; color: var(--text-title); margin: 10px 0;">0/sec</h1>
+                    <div style="background: var(--border-color); width: 100%; height: 6px; border-radius: 3px; overflow: hidden; margin-top: 15px;">
+                        <div id="stats-progress-bar" style="background: var(--button-accent); width: 0%; height: 100%; transition: width 0.4s ease;"></div>
                     </div>
                 </div>
 
-                <!-- Card 3: Backend Runtime Frameworks -->
-                <div class="dashboard-card" style="grid-column: span 2; max-width: 100%; text-align: left;">
-                    <h3 style="color: #64748b; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 15px;">Active Subsystems</h3>
-                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
-                        <li style="display: flex; justify-content: space-between; font-size: 0.95rem; color: #334155;">
-                            <span>Active Profiler Username</span> <span id="stats-username" style="color: #6366f1; font-weight: 600;">Guest</span>
+                <!-- Card 3: Real-Time Performance Graph Matrix -->
+                <div class="dashboard-card" style="grid-column: span 2; max-width: 100%; text-align: left; padding: 24px;">
+                    <h3 style="color: #64748b; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">Production Rate Timeline (30s Window)</h3>
+                    <canvas id="performance-chart" height="140" style="width: 100%; background: var(--bg-primary); border-radius: 8px; border: 1px solid var(--border-color);"></canvas>
+                </div>
+
+                <!-- Card 4: Telemetry Diagnostics Matrix -->
+                <div class="dashboard-card" style="grid-column: span 2; max-width: 100%; text-align: left; padding: 24px;">
+                    <h3 style="color: #64748b; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 15px;">Active Subsystems Telemetry</h3>
+                    <ul style="list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 30px;">
+                        <li style="display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-body); border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">
+                            <span>Profiler User</span> <span id="stats-username" style="color: #6366f1; font-weight: 600;">Guest</span>
                         </li>
-                        <li style="display: flex; justify-content: space-between; font-size: 0.95rem; color: #334155;">
-                            <span>Runtime Engine</span> <span style="color: #10b981; font-weight: 600;">Cloudflare Serverless Static</span>
+                        <li style="display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-body); border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">
+                            <span>Active Clicks</span> <span id="stats-manual-clicks" style="font-weight: 600;">0</span>
+                        </li>
+                        <li style="display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-body); border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">
+                            <span>Critical Hit Ratio</span> <span id="stats-crit-ratio" style="color: #ef4444; font-weight: 600;">0.0%</span>
+                        </li>
+                        <li style="display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-body); border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">
+                            <span>Session Run Time</span> <span id="stats-uptime" style="font-family: monospace; font-weight: 600;">00:00</span>
                         </li>
                     </ul>
                 </div>
@@ -61,6 +73,7 @@
 
     </div>
 
-    <script src="script.js"></script>
+    <!-- This links your script safely without polluting the html file -->
+    <script src="analytics.js"></script>
 </body>
 </html>
