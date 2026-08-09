@@ -244,3 +244,40 @@ if (timeElement) {
     renderClock();
     setInterval(renderClock, 1000);
 }
+// Add this right at the very bottom of your script.js file!
+const prestigeBtn = document.getElementById('prestige-btn');
+
+prestigeBtn?.addEventListener('click', () => {
+    if (count >= 5000) {
+        prestigeMultiplier += 1.0; 
+        localStorage.setItem('prestige_mult', prestigeMultiplier.toString());
+        
+        // Reset balances back to baseline
+        count = 0;
+        clickPower = 1;
+        autoClickers = 0;
+        superCost = 15;
+        autoCost = 50;
+
+        localStorage.setItem('game_clicks', '0');
+        localStorage.setItem('click_power', '1');
+        localStorage.setItem('auto_clickers', '0');
+        localStorage.setItem('cost_super', '15');
+        localStorage.setItem('cost_auto', '50');
+
+        alert('🌀 Timelines Shattered! You earned a permanent +1.0x Global Yield Multiplier!');
+        updateGameUI();
+    } else {
+        alert('🔒 You need at least 5,000 Clicks to trigger a Quantum Prestige update!');
+    }
+});
+
+// Passive generation tick loop
+setInterval(() => {
+    if (autoClickers > 0) {
+        count += Math.round(autoClickers * prestigeMultiplier);
+        localStorage.setItem('game_clicks', count.toString());
+        updateGameUI();
+    }
+}, 1000);
+
