@@ -1,0 +1,17 @@
+pages:
+  stage: deploy
+
+  script:
+    - New-Item -ItemType Directory -Force -Path public
+    - Copy-Item cgtgames/index.html public/index.html
+    - Copy-Item cgtgames/style.css public/style.css
+    - Copy-Item cgtgames/script.js public/script.js
+
+  pages: true
+
+  artifacts:
+    paths:
+      - public
+
+  only:
+    - main
